@@ -157,6 +157,8 @@ namespace BIM.IFC.Export.UI
                      configuration.ExportRoomsInView = bool.Parse(configMap[s_setupExportRoomsInView]);
                   if (configMap.ContainsKey(s_includeSteelElements))
                      configuration.IncludeSteelElements = bool.Parse(configMap[s_includeSteelElements]);
+                  if (configMap.ContainsKey(s_useOnlyTriangulation))
+                     configuration.UseOnlyTriangulation = bool.Parse(configMap[s_useOnlyTriangulation]);
                   if (configMap.ContainsKey(s_useTypeNameOnlyForIfcType))
                      configuration.UseTypeNameOnlyForIfcType = bool.Parse(configMap[s_useTypeNameOnlyForIfcType]);
                   if (configMap.ContainsKey(s_useVisibleRevitNameAsEntityName))
@@ -232,7 +234,9 @@ namespace BIM.IFC.Export.UI
                   Field fieldIncludeSteelElements = m_schema.GetField(s_includeSteelElements);
                   if (fieldIncludeSteelElements != null)
                      configuration.IncludeSteelElements = configEntity.Get<bool>(s_includeSteelElements);
-
+                  Field fieldUseOnlyTriangulation = m_schema.GetField(s_useOnlyTriangulation);
+                  if (fieldUseOnlyTriangulation != null)
+                     configuration.UseOnlyTriangulation = configEntity.Get<bool>(s_useOnlyTriangulation);
                   Field fieldUseTypeNameOnlyForIfcType = m_schema.GetField(s_useTypeNameOnlyForIfcType);
                   if (fieldUseTypeNameOnlyForIfcType != null)
                      configuration.UseTypeNameOnlyForIfcType = configEntity.Get<bool>(s_useTypeNameOnlyForIfcType);

@@ -270,7 +270,8 @@ namespace BIM.IFC.Export.UI
          else
             checkBox_TriangulationOnly.IsEnabled = false;
          checkBox_TriangulationOnly.IsChecked = configuration.UseOnlyTriangulation;
-
+         checkbox_UseVisibleRevitNameAsEntityName.IsChecked = configuration.UseVisibleRevitNameAsEntityName;
+         checkbox_UseTypeNameOnly.IsChecked = configuration.UseTypeNameOnlyForIfcType;
          userDefinedParameterMappingTable.Text = configuration.ExportUserDefinedParameterMappingFileName;
          checkBoxExportUserDefinedParameterMapping.IsChecked = configuration.ExportUserDefinedParameterMapping;
 
@@ -318,7 +319,8 @@ namespace BIM.IFC.Export.UI
                                                                 comboBoxLOD,
                                                                 checkBoxUseActiveViewGeometry,
                                                                 checkBoxExportSpecificSchedules,
-                                                                checkBox_TriangulationOnly
+                                                                checkbox_UseVisibleRevitNameAsEntityName,
+                                                                checkbox_UseTypeNameOnly
             };
 
          foreach (UIElement element in configurationElements)
@@ -331,7 +333,7 @@ namespace BIM.IFC.Export.UI
          buttonBrowse.IsEnabled = buttonBrowse.IsEnabled && configuration.ExportUserDefinedPsets;
          buttonParameterMappingBrowse.IsEnabled = buttonParameterMappingBrowse.IsEnabled && configuration.ExportUserDefinedParameterMapping;
 
-         if ((configuration.IFCVersion == IFCVersion.IFC2x3) || (configuration.IFCVersion == IFCVersion.IFCCOBIE) || (configuration.IFCVersion == IFCVersion.IFC2x3FM) || (configuration.IFCVersion == IFCVersion.IFC2x3BFM) || (configuration.IFCVersion == IFCVersion.IFC2x3CV2))
+         if ((configuration.IFCVersion == IFCVersion.IFC2x3) || (configuration.IFCVersion == IFCVersion.IFCCOBIE) || (configuration.IFCVersion == IFCVersion.IFC2x3FM) || (configuration.IFCVersion == IFCVersion.IFC2x3BFM) || (configuration.IFCVersion == IFCVersion.IFC2x3CV2) || (configuration.IFCVersion == IFCVersion.IFC2x3BFM) || (configuration.IFCVersion == IFCVersion.IFC2x3CV2) || (configuration.IFCVersion == IFCVersion.IFC4RV) || (configuration.IFCVersion == IFCVersion.IFC4DTV) || (configuration.IFCVersion == IFCVersion.IFC4))
             checkboxIncludeSteelElements.IsEnabled = true;
          else
             checkboxIncludeSteelElements.IsEnabled = false;
@@ -341,7 +343,7 @@ namespace BIM.IFC.Export.UI
          checkBoxExportRoomsInView.IsEnabled = checkBoxExportRoomsInView.IsEnabled && cboVisibleElementInCurrentView.HasValue ? cboVisibleElementInCurrentView.Value : false;
          bool? triangulationOnly = checkBox_TriangulationOnly.IsChecked;
 
-         if ((configuration.IFCVersion == IFCVersion.IFC2x3) || (configuration.IFCVersion == IFCVersion.IFCCOBIE) || (configuration.IFCVersion == IFCVersion.IFC2x3FM) || (configuration.IFCVersion == IFCVersion.IFC2x3BFM) || (configuration.IFCVersion == IFCVersion.IFC2x3CV2))
+         if ((configuration.IFCVersion == IFCVersion.IFC2x3) || (configuration.IFCVersion == IFCVersion.IFCCOBIE) || (configuration.IFCVersion == IFCVersion.IFC2x3FM) || (configuration.IFCVersion == IFCVersion.IFC2x3BFM) || (configuration.IFCVersion == IFCVersion.IFC2x3CV2) || (configuration.IFCVersion == IFCVersion.IFC2x3BFM) || (configuration.IFCVersion == IFCVersion.IFC2x3CV2) || (configuration.IFCVersion == IFCVersion.IFC4RV) || (configuration.IFCVersion == IFCVersion.IFC4DTV) || (configuration.IFCVersion == IFCVersion.IFC4))
          {
             checkboxIncludeSteelElements.IsChecked = configuration.IncludeSteelElements;
             checkboxIncludeSteelElements.IsEnabled = true;
